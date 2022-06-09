@@ -64,12 +64,22 @@ Switch(config-if)#exit
 
 #Configurar la ip del switch
 Switch# configure terminal
-Switch(config)# interface vlan 1
+Switch(config)# interface vlan 100
 Switch(config-if)# ip address 192.168.100.103 255.255.255.0
 Switch(config-if)# no shutdown
 Switch(config-if)# exit
 Switch(config)# ip default-gateway 192.168.100.1
 
+#Establecer el password
+#Acceder a la interfaz de telnet con el comando line vty 0 4
+Switch(config)#line vty 0 4
+Switch(config-line)#login
+Switch(config-line)#password xxxxx
+Switch(config-line)#end
+
 
 #Guardar los cambios
-copy running-config startup-config
+Switch#copy running-config startup-config
+o
+Switch#wr
+
