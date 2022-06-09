@@ -13,6 +13,16 @@ Switch(config)#spanning-tree mode rapid-pvst
 Switch(config)#spanning-tree extend system-id     
 Switch(config)#vlan internal allocation policy ascending
 
+#Nombrado de las VLAN
+Switch(config)#vlan 10
+Switch(config-vlan)#name Direccio
+Switch(config-vlan)#exit
+
+Switch(config)#vlan 100
+Switch(config-vlan)#name Gestio
+Switch(config-vlan)#exit
+
+
 #Interfaz trunk
 Switch(config)#interface Gi0/0
 Switch(config-if)#switchport trunk encapsulation dot1q
