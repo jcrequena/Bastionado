@@ -70,11 +70,19 @@ Switch(config-if)# no shutdown
 Switch(config-if)# exit
 Switch(config)# ip default-gateway 192.168.100.1
 
-#Establecer el password
+#Establecer el password para el acceso por telnet
 #Acceder a la interfaz de telnet con el comando line vty 0 4
 Switch(config)#line vty 0 4
-Switch(config-line)#login
 Switch(config-line)#password xxxxx
+Switch(config-line)#login
+Switch(config-line)#end
+
+
+
+#Establecer el password para acceder a la configuración (ena)
+Switch(config)#line con 0
+Switch(config-line)#password xxxxxx
+Switch(config-line)#login
 Switch(config-line)#end
 
 
