@@ -1,0 +1,118 @@
+Switch-Aula1
+--------------
+
+Switch>ena
+Switch#conf t
+
+Switch(config)#spanning-tree mode rapid-pvst
+Switch(config)#spanning-tree extend system-id     
+Switch(config)#vlan internal allocation policy ascending
+
+
+
+#Nombrado de las VLAN
+
+
+Switch(config)#vlan 3
+Switch(config-vlan)#name Aula1
+Switch(config-vlan)#exit
+
+Switch(config)#vlan 5
+Switch(config-vlan)#name Professorat
+Switch(config-vlan)#exit
+
+Switch(config)#vlan 100
+Switch(config-vlan)#name Gestio
+Switch(config-vlan)#exit
+
+#Interfaz trunk
+Switch(config)#interface Gi0/0
+Switch(config-if)#switchport trunk encapsulation dot1q
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+
+#Interfaz PC Alumno_A1_1
+#switchport protected -->
+  #El puerto protected no se comunica con otros puertos protected pero se comunica con otros puertos no protected. 
+  #Para que un puerto protected se comunique con otro puerto protected, se utiliza una puerta de enlace predeterminada (capa 3).
+
+Switch(config)#interface Gi0/1
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport protected
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+
+#Interfaz PC Alumno_A1_2
+#switchport protected -->
+  #El puerto protected no se comunica con otros puertos protected pero se comunica con otros puertos no protected. 
+  #Para que un puerto protected se comunique con otro puerto protected, se utiliza una puerta de enlace predeterminada (capa 3).
+
+Switch(config)#interface Gi0/2
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport protected
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+
+
+#Interfaz PC Profesor
+#switchport protected -->
+  #El puerto protected no se comunica con otros puertos protected pero se comunica con otros puertos no protected. 
+  #Para que un puerto protected se comunique con otro puerto protected, se utiliza una puerta de enlace predeterminada (capa 3).
+
+Switch(config)#interface Gi0/3
+Switch(config-if)#switchport access vlan 5
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport protected
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+
+
+
+#Interfaz PC Coordinador TIC - Gestio    
+Switch(config)#interface Gi1/0
+Switch(config-if)#switchport access vlan 100
+Switch(config-if)#switchport mode access
+Switch(config-if)#switchport protected
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+
+#Configurar la ip del switch
+Switch# configure terminal
+Switch(config)# interface vlan 100
+Switch(config-if)# ip address 192.168.100.101 255.255.255.0
+Switch(config-if)# no shutdown
+Switch(config-if)# exit
+Switch(config)# ip default-gateway 192.168.100.1
+
+
+#Establecer el password para el acceso por telnet
+#Acceder a la interfaz de telnet con el comando line vty 0 4
+Switch(config)#line vty 0 4
+Switch(config-line)#password 123456
+Switch(config-line)#login
+Switch(config-line)#end
+
+
+
+#Establecer el password para acceder a la configuración (ena)
+Switch(config)#line con 0
+Switch(config-line)#password 123456
+Switch(config-line)#login
+Switch(config-line)#end
+
+
+
+#Guardar los cambios
+Switch#copy running-config startup-config
+
+
+#Sacar listado
+Switch# show running-config
