@@ -37,6 +37,7 @@ Switch(config-if)#negotiation auto
 #switchport protected -->
   #El puerto protected no se comunica con otros puertos protected pero se comunica con otros puertos no protected. 
   #Para que un puerto protected se comunique con otro puerto protected, se utiliza una puerta de enlace predeterminada (capa 3).
+  #Para quitar la protección, hacemos: no switchport protected
 
 Switch(config)#interface Gi0/1
 Switch(config-if)#switchport access vlan 3
