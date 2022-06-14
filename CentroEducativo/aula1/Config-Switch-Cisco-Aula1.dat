@@ -1,0 +1,73 @@
+Switch-Aula1
+--------------
+
+Switch>ena
+Switch#conf t
+
+Switch(config)#spanning-tree mode rapid-pvst
+Switch(config)#spanning-tree extend system-id     
+Switch(config)#vlan internal allocation policy ascending
+
+
+#Nombrado de las VLAN
+
+Switch(config)#vlan 3
+Switch(config-vlan)#name Aula1
+Switch(config-vlan)#exit
+
+Switch(config)#vlan 5
+Switch(config-vlan)#name Profesorado
+Switch(config-vlan)#exit
+
+#Interfaz trunk
+Switch(config)#interface Gi0/0
+Switch(config-if)#switchport trunk encapsulation dot1q
+Switch(config-if)#switchport mode trunk
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+
+#Interfaz PC Alumno_A1_1
+Switch(config)#interface Gi0/1
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#switchport mode access
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+#Interfaz PC Alumno_A1_2
+Switch(config)#interface Gi0/2
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#switchport mode access
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+
+#Interfaz PC Profesor
+Switch(config)#interface Gi0/3
+Switch(config-if)#switchport access vlan 5
+Switch(config-if)#switchport mode access
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+#Interfaz Kali
+Switch(config)#interface Gi1/0
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#switchport mode access
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+#Interfaz Firefox
+Switch(config)#interface Gi1/1
+Switch(config-if)#switchport access vlan 3
+Switch(config-if)#switchport mode access
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+
+
+#Guardar los cambios
+Switch#copy running-config startup-config
+
+
+#Sacar listado
+Switch# show running-config
