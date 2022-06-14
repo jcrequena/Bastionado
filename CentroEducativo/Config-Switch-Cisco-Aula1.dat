@@ -18,11 +18,11 @@ Switch(config-vlan)#name Aula1
 Switch(config-vlan)#exit
 
 Switch(config)#vlan 5
-Switch(config-vlan)#name Professorat
+Switch(config-vlan)#name Profesorado
 Switch(config-vlan)#exit
 
 Switch(config)#vlan 100
-Switch(config-vlan)#name Gestio
+Switch(config-vlan)#name Gestion
 Switch(config-vlan)#exit
 
 #Interfaz trunk
