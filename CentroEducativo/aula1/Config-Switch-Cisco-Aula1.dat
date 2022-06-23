@@ -21,6 +21,7 @@ Switch(config-vlan)#exit
 
 #Interfaz trunk
 Switch(config)#interface Gi0/0
+Switch(config-if)#switchport trunk allowed vlan 3,5,100
 Switch(config-if)#switchport trunk encapsulation dot1q
 Switch(config-if)#switchport mode trunk
 Switch(config-if)#media-type rj45
