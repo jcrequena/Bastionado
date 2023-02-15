@@ -19,6 +19,11 @@ Switch(config)#vlan 5
 Switch(config-vlan)#name Profesorado
 Switch(config-vlan)#exit
 
+Switch(config)#vlan 100
+Switch(config-vlan)#name Gestion
+Switch(config-vlan)#exit
+
+
 #Interfaz trunk
 Switch(config)#interface Gi0/0
 Switch(config-if)#switchport trunk allowed vlan 3,5,100
