@@ -12,15 +12,15 @@ Switch(config)#vlan internal allocation policy ascending
 
 #Nombrado de las VLAN
 Switch(config)#vlan 5
-Switch(config-vlan)#name Professorat
+Switch(config-vlan)#name Profesorado
 Switch(config-vlan)#exit
 
 Switch(config)#vlan 2
-Switch(config-vlan)#name Alumnat
+Switch(config-vlan)#name Alumnado
 Switch(config-vlan)#exit
 
 Switch(config)#vlan 100
-Switch(config-vlan)#name Gestio
+Switch(config-vlan)#name Gestion
 Switch(config-vlan)#exit
 
 #Interfaz trunk
