@@ -72,7 +72,7 @@ Switch(config-if)#negotiation auto
 
 
 
-#Interfaz PC Coordinador TIC - Gestio    
+#Interfaz PC Coordinador TIC - Gestion    
 Switch(config)#interface Gi1/0
 Switch(config-if)#switchport access vlan 100
 Switch(config-if)#switchport mode access
