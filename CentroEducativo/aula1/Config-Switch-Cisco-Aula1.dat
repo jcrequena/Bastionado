@@ -69,6 +69,24 @@ Switch(config-if)#switchport mode access
 Switch(config-if)#media-type rj45
 Switch(config-if)#negotiation auto
 
+#Interfaz Equipo de gestión
+Switch(config)#interface Gi1/2
+Switch(config-if)#switchport access vlan 100
+Switch(config-if)#switchport mode access
+Switch(config-if)#media-type rj45
+Switch(config-if)#negotiation auto
+
+#Configurar ip del switch en la subred de la vlan de gestion
+switch-dmz#conf t
+switch-dmz(config-if)#int vlan 100
+switch-dmz(config-if)#ip address 192.168.100.2 255.255.255.240
+switch-dmz(config-if)#no shutdown
+switch-dmz(config-if)#exit
+switch-dmz(config)#ip default-gateway 192.168.100.1
+
+#Configurar el password para el acceso al switch (telnet)
+
+
 
 
 #Guardar los cambios
